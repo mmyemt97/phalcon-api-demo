@@ -1,0 +1,43 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #c1c1c1;
+            text-align: left;
+            padding: 8px;
+        }
+        .text-right{text-align: right}
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <td>CSKH</td>
+        <td>Tổng</td>
+        <td>Tái ký</td>
+        <td>Ký mới</td>
+        <td>Doanh thu tháng trước</td>
+        <td>Doanh thu 4 tháng trước</td>
+        <td>Ghi chú</td>
+    </tr>
+    <?php foreach ($result as $key => $data) : ?>
+        <tr>
+            <td><?= $data['login_name'] ?></td>
+            <td class="text-right"><?= $data['result']['current']['total_revenue'] ?> đ</td>
+            <td class="text-right"><?= $data['result']['current']['total_old_revenue'] ?> đ</td>
+            <td class="text-right"><?= $data['result']['current']['total_new_revenue'] ?> đ</td>
+            <td class="text-right"><?= $data['result']['back_1']['total_revenue'] ?> đ</td>
+            <td class="text-right"><?= $data['result']['back_4']['total_revenue'] ?> đ</td>
+            <td><?= $data['result']['current']['note'] ?></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+</body>
+</html>

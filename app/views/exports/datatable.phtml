@@ -1,0 +1,21 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <table>
+        <tr>
+            <?php foreach ($columns as $column) : ?>
+                <td><?= $column ?></td>
+            <?php endforeach; ?>
+        </tr>
+        <?php foreach ($result as $data) : ?>
+            <tr>
+                <?php foreach ($columns as $column) : ?>
+                    <td><?= $data[$column] ?></td>
+                <?php endforeach; ?>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</body>
+</html>

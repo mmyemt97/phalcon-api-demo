@@ -1,0 +1,51 @@
+{
+  "name": "phalcon/website",
+  "description": "Official Phalcon Website",
+  "autoload": {
+    "psr-4": {
+      "Website\\": "app/library/",
+      "Website\\Cli\\Tasks\\": "app/tasks/",
+      "Website\\Controllers\\": "app/controllers/",
+      "Website\\Models\\": "app/models/",
+      "Website\\Transformers\\": "app/transformers/",
+      "Website\\Repos\\": "app/repos/",
+      "Website\\Services\\": "app/services/",
+      "Frontend\\":"frontend"
+    },
+    "files": ["app/helpers/app.php"]
+  },
+  "require": {
+    "php": ">= 7.0",
+    "sieuviet/codebase": "dev-develop",
+    "elasticsearch/elasticsearch": "6.0.1",
+    "php-amqplib/php-amqplib": ">=2.6.1",
+    "sieuviet/debugger": "dev-develop",
+    "mikehaertl/phpwkhtmltopdf": "^2.4",
+    "dmkit/phalcon-jwt-auth" : "dev-master"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8",
+    "codeception/codeception": "^2.2",
+    "codeception/verify": "~0.3",
+    "codeception/specify": "~0.4",
+    "codeception/mockery-module": "^0.2",
+    "squizlabs/php_codesniffer": "~2.7",
+    "php-amqplib/php-amqplib": ">=2.6.1"
+  },
+  "config": {
+    "preferred-install": "dist",
+    "optimize-autoloader": true
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://anonymous:sieuviet123@gitlab.sieuviet-dev.com/sieuviet/erp/codebase",
+      "reference": "master"
+    },
+    {
+      "type": "git",
+      "url": "https://anonymous:sieuviet123@gitlab.sieuviet-dev.com/nghiavt/debugger",
+      "reference": "develop"
+    }
+  ]
+}

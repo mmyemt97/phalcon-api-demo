@@ -1,0 +1,71 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #c1c1c1;
+            text-align: left;
+            padding: 8px;
+        }
+        .text-right{text-align: right}
+    </style>
+</head>
+<body>
+<table>
+    <?php
+        $heading = $datas[0]['result'];
+        $weekYearText = function ($type) use ($heading) {
+            return $heading[$type]['week'] . '/' . $heading[$type]['year'];
+        };
+        $dateText = function ($type) use ($heading) {
+            return "Tuần {$heading[$type]['week']} </br> ({$heading[$type]['date_start']} - {$heading[$type]['date_end']})";
+        }
+    ?>
+    <tr>
+        <td colspan="4"></td>
+        <td colspan="5">Doanh thu tuần <?= $weekYearText('current') ?></td>
+        <td colspan="5">Doanh thu 4 tuần trước</td>
+    </tr>
+    <tr>
+        <td colspan="3">CSKH</td>
+        <td>Chỉ tiêu tuần <?= $weekYearText('next') ?></td>
+        <td>Chỉ tiêu tuần <?= $weekYearText('current') ?></td>
+        <td>Đạt được tuần <?= $weekYearText('current') ?></td>
+
+        <td>% Hoàn thành tuần <?= $weekYearText('current') ?></td>
+        <td>% Doanh thu tăng/giảm so với tuần <?= $weekYearText('back_1') ?></td>
+        <td>% Doanh thu tăng/giảm so với TB 4 tuần trước</td>
+        <td>Doanh thu TB 4 tuần trước </td>
+
+        <td><?= $dateText('back_1') ?></td>
+        <td><?= $dateText('back_2') ?></td>
+        <td><?= $dateText('back_3') ?></td>
+        <td><?= $dateText('back_4') ?></td>
+    </tr>
+    <?php foreach($datas as $key => $data): ?>
+    <tr class="text-bold tr-body el-table-row">
+        <td colspan="3"><?= $data['email'] ?></td>
+        <td class="text-right"><?= $data['result']['next']['total_revenue_target'] ?> đ</td>
+        <td class="text-right"><?= $data['result']['current']['total_revenue_target'] ?> đ</td>
+        <td class="text-right"><?= $data['result']['current']['total_revenue_real'] ?> đ</td>
+
+        <td class="text-right"><?= $data['calc']['compare_target_current'] ?> %</td>
+        <td class="text-right"><?= $data['calc']['compare_target_back_1'] ?> %</td>
+        <td class="text-right"><?= $data['calc']['compare_target_4_week'] ?> %</td>
+        <td class="text-right"><?= $data['calc']['avarage_4_week'] ?> đ</td>
+
+        <td class="text-right"><?= $data['result']['back_1']['total_revenue_real'] ?> đ</td>
+        <td class="text-right"><?= $data['result']['back_2']['total_revenue_real'] ?> đ</td>
+        <td class="text-right"><?= $data['result']['back_3']['total_revenue_real'] ?> đ</td>
+        <td class="text-right"><?= $data['result']['back_4']['total_revenue_real'] ?> đ</td>
+    </tr>
+    <?php endforeach;?>
+</table>
+</body>
+</html>

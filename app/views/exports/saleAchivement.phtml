@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #c1c1c1;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <td>CSKH</td>
+        <td>Tổng số phiếu</td>
+        <td>Tổng giá trị</td>
+    </tr>
+    <?php foreach ($result as $key => $data) : ?>
+        <tr>
+            <td><?= $key ?></td>
+            <td><?= array_sum(array_column($data, 'total_achievement')) ?></td>
+            <td><?= array_sum(array_column($data, 'total_revenue')) ?></td>
+        </tr>
+        <?php foreach ($data as $value) : ?>
+            <tr>
+                <td><?= $value['login_name'] ?></td>
+                <td><?= $value['total_achievement'] ?></td>
+                <td><?= $value['total_revenue'] ?></td>
+            </tr>
+        <?php endforeach; ?>
+    <?php endforeach; ?>
+</table>
+</body>
+</html>
