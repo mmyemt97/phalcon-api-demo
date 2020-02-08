@@ -48,16 +48,12 @@ class CategoryRepo extends BaseRepo{
 
 		$count = $h->where("id=".$id)->get();
 
-		// xxx(count($count));
-
 		if(count($count) >= 1){
 			$update = $h->where("id=".$id)->update($param);
 			return $update;
 		}else if(count($count) == 0){
 			return FALSE;
 		}
-
-		
 	}
 
 	public function destroyAction($id){

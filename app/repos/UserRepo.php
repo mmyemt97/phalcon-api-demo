@@ -62,7 +62,7 @@ class UserRepo extends BaseRepo{
 		}
 	}
 
-	public function registerJwt($username, $password){
+	public function registerJwt($username, $fullname){
         $key = 'phalcontestsvweb';
         $header = [
             'alg' => 'HS256',
@@ -71,7 +71,7 @@ class UserRepo extends BaseRepo{
         $payload = [
             'iat' => time(),
             'username' => $username,
-            'password'=> $password
+            'full_name'=> $fullname
         ];
         return $jwt = JWT::encode($payload, $key);
     }

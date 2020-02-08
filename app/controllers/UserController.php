@@ -64,6 +64,7 @@ class UserController extends BaseController{
 		
 		$username = $this->request->getPost('username');
 		$password = $this->request->getPost('password');
+		
 		$paramToLogin = [
 			'username'=>$username,
 			'password'=>$password,
@@ -71,8 +72,10 @@ class UserController extends BaseController{
 
 		$checkLogin = $this->repo->loginAction($paramToLogin);
 
+		$fullname = $checkLogin->full_name;
+
 		if($checkLogin != false){
-			$auth_jwt = $this->repo->registerJWT($username,$password);
+			$auth_jwt = $this->repo->registerJWT($username,$fullname);
 			return $this->outputSuccess($auth_jwt);
 		}
 	}
