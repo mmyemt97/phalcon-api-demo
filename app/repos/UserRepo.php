@@ -2,7 +2,6 @@
 namespace Website\Repos;
 
 use Website\Models\Users;
-use \Phalcon\Security;
 use Firebase\JWT\JWT;
 
 class UserRepo extends BaseRepo{
@@ -34,6 +33,8 @@ class UserRepo extends BaseRepo{
 
 		$user = $h->newModel();
 		$username = $param['username'];
+		// $security = new \Phalcon\Security();
+		// $param['password'] = $security->hash($param['password']);
 		$checkDuplicator = $this->checkDuplicator($username);
 		if($checkDuplicator){
 			return $user->create($param);
@@ -54,7 +55,6 @@ class UserRepo extends BaseRepo{
 		$h = Users::buildModel();
 
 		$check = $h->where("username = '".$username."'")->get();
-		// xxx(count($check));
 		if(count($check) >= 1){
 			return false;
 		}else{

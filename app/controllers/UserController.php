@@ -53,7 +53,6 @@ class UserController extends BaseController{
 		if($checkRegister){
 			return $this->outputSuccess($checkRegister);
 		}else{
-
 			$err = 'Tên đăng nhập đã có người sử dụng!';
 			return $this->outputSuccess($err);
 		}
